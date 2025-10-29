@@ -1,7 +1,7 @@
 infooscreen.dpdns.org {
-	 basicauth {
-	 	infooscreen $2a$14$7rs1ahRbCQptLqz/oVdV2uK2OFlPEeTmzYh79/F8W23J.vVEbwUXq
-	 }
+	 #basicauth {
+	 #	infooscreen $2a$14$7rs1ahRbCQptLqz/oVdV2uK2OFlPEeTmzYh79/F8W23J.vVEbwUXq
+	 #}
 
 	reverse_proxy website:8080
 
