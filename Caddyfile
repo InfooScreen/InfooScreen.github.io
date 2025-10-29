@@ -1,0 +1,14 @@
+infooscreen.dpdns.org {
+	 basicauth {
+	 	infooscreen $2a$14$7rs1ahRbCQptLqz/oVdV2uK2OFlPEeTmzYh79/F8W23J.vVEbwUXq
+	 }
+
+	reverse_proxy website:8080
+
+	@rendezvous {
+		header Connection *Upgrade*
+		header Upgrade websocket
+	}
+
+	reverse_proxy @rendezvous rendezvous:4000
+}
