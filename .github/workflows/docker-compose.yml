@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.9"
 
 services:
   rendezvous:
@@ -13,16 +13,14 @@ services:
     image: "caddy:2.3.0-alpine"
     restart: unless-stopped
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro  # Added :ro for read-only if appropriate
+      - ./Caddyfile:/etc/caddy/Caddyfile
     ports:
-      - "443:443"
       - "80:80"
+      - "443:443"
 
   turn:
     image: "coturn/coturn:4.5.2"
     restart: unless-stopped
-    # Use the host network directly as Docker performs badly with
-    # large port ranges
     network_mode: "host"
     volumes:
-      - ./turnserver.conf:/etc/coturn/turnserver.conf:ro  # Added :ro for read-only if appropriate
+      - ./turnserver.conf:/etc/coturn/turnserver.conf
