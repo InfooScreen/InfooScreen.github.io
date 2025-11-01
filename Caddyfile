@@ -11,4 +11,8 @@ infooscreen.dpdns.org {
 	}
 
 	reverse_proxy @rendezvous rendezvous:4000
+
+	tls {
+		ca https://acme-staging-v02.api.letsencrypt.org/directory
+	}
 }

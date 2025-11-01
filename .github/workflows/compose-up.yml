@@ -14,3 +14,17 @@ jobs:
 
       - name: Build and run docker-compose
         run: docker compose up -d --build
+
+      - name: Wait for services to start
+        run: sleep 30
+
+      - name: Check service connectivity
+        run: |
+          docker compose exec caddy curl -I http://website:8080
+          docker compose exec caddy curl -I http://rendezvous:4000
+
+      - name: Show Caddy logs
+        run: docker compose logs caddy --tail=20
+
+      - name: Show all service logs
+        run: docker compose logs --tail=10
