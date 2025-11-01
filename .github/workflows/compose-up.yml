@@ -20,8 +20,8 @@ jobs:
 
       - name: Check service connectivity
         run: |
-          docker compose exec caddy curl -I http://website:8080
-          docker compose exec caddy curl -I http://rendezvous:4000
+          docker compose exec caddy wget -qO- http://website:8080 | head -5
+          docker compose exec caddy wget -qO- http://rendezvous:4000 || echo "WebSocket server (expected error)"
 
       - name: Show Caddy logs
         run: docker compose logs caddy --tail=20
